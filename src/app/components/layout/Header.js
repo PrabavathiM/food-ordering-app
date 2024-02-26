@@ -2,7 +2,7 @@ export default function Header() {
     return (
 
         <header className="flex items-center justify-between">
-            <a className="text-primary font-semibold text-3xl" href="">BIRYANI</a>
+            <a className="text-primary font-semibold text-3xl" href="">FOOD BOX</a>
             <nav className="flex gap-8 text-black-300">
                 <a href="">Home</a>
                 <a href="">Menu</a>

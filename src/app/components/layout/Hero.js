@@ -1,8 +1,8 @@
 export default function Hero() {
     return (
         <section>
-            <h1>In a world full of choices, always choose biryani</h1>
-            <p>Biryani, a tantalizing Indian dish, blends fragrant basmati rice with tender meat or vegetables, infused with a symphony of spices like saffron, cardamom, and cinnamon. Each bite is a flavorful journey, evoking warmth, tradition, and culinary delight.</p>
+            <h1>First we eat, then we do everything else</h1>
+            <p>Food nourishes the body, fuels our endeavors, and connects us culturally. It evokes memories, satisfies cravings, and brings people together. From simple pleasures to culinary delights, food is a universal language of delight.</p>
             <div>
             <img src={'biryani.jpeg'} layout={'fill'} objectFit={'contain'} alt={'biryani'} />
             </div>
