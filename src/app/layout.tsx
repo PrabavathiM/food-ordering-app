@@ -3,7 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 
 
-const poppins = Poppins({ subsets: ["latin"] ,weight:['200','400','600','800']});
+const poppins = Poppins({ subsets: ["latin"], weight: ['200','400','600']});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,9 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <main className="max-w-4xl mx-auto p-4">
-        {children}
+          {children}
         </main>
-       
+
       </body>
     </html>
   );
