@@ -3,6 +3,7 @@ import Hero from '../app/components/layout/Hero';
 import HomeMenu from '../app/components/layout/HomeMenu';
 
 
+
 export default function Home() {
   return (
 
@@ -10,7 +11,7 @@ export default function Home() {
       <Header />
       <Hero />
       <HomeMenu />
-
+      
     </>
 
   );
