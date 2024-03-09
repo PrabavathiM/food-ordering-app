@@ -12,6 +12,7 @@ export default function Hero() {
                     Food nourishes the body, fuels our endeavors, and connects us culturally. It evokes memories, satisfies cravings, and brings people together. From simple pleasures to culinary delights, food is a universal language of delight.
                 </p>
             </div>
+            
 
 
             <div className="w-25 h-20 relative">
