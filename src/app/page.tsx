@@ -1,6 +1,6 @@
-import Header from '../app/components/layout/Header';
-import Hero from '../app/components/layout/Hero';
-import HomeMenu from '../app/components/layout/HomeMenu';
+import Header from 'src/components/layout/Header';
+import Hero from 'src/components/layout/Hero';
+import HomeMenu from 'src/components/layout/HomeMenu';
 
 
 
@@ -11,7 +11,7 @@ export default function Home() {
       <Header />
       <Hero />
       <HomeMenu />
-      
+
     </>
 
   );

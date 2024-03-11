@@ -1,4 +1,4 @@
-import Right from './icons/Right'
+import Right from 'src/components/icons/Right'
 export default function Hero() {
     return (
         <section className="hero">
