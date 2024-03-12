@@ -1,6 +1,23 @@
+"use client";
+import Image from "next/image";
+import { useState } from "react";
+
+
+
 export default function RegisterPage(){
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    function handleFormatSubmit(){
+        ev.preventDefault();
+        fetch ('/api/register', {
+            method: 'POST',
+            body: JSON.stringify({email, password}),
+            headers: {'Content-Type':'application/json'},
+        });
+    }
     return(
        <section className="mt-8">
+
         {/* header */}
            <header className="flex items-center justify-between">
             <a className="text-primary font-semibold text-3xl" href="">FOOD BOX</a>
@@ -15,13 +32,18 @@ export default function RegisterPage(){
                 <a className="bg-primary text-white rounded-full px-6 py-2" href="register">Register</a>
             </nav>
         </header>  
+
          {/*form part  */}
-        <h1 className="text-center text-primary text-4xl font-bold mt-5">
+        <h1 className="text-center text-primary text-3xl font-semibold mt-5">
             Register
         </h1>
-        <form className="block max-w-xs mx-auto">
-            <input type="email" placeholder="email"></input>
-            <input type="password" placeholder="password"></input> 
+        <form className="block max-w-xs mx-auto" onSubmit={handleFormatSubmit}>
+            <input type="email" placeholder="email" value={email}
+            onChange={ev => setEmail(ev.target.value)}></input>
+
+            <input type="password" placeholder="password" value={password}
+            onChange={ev => setPassword(ev.target.value)}></input>
+
             <button type="submit">Register</button> 
             <div className="my-4 text-center text-gray-500" >
                 or login with provider
