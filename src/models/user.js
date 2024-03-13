@@ -1,17 +1,16 @@
-import { Schema } from "mongoose";
+import {Schema} from "mongoose";
 
 const UserSchema = new Schema({
-    email: {type: String, required:true, unique:true},
-    password: {
-        type: String,
-         required: true,
-          validate: pass => {
-            if (!pass?.length || pass.length < 5){
-                new Error('password must be at least 5 characters');
-                return false;
-            }
-        },
-    },
-},{timestamps: true});
+  email: {type: String, required: true, unique: true},
+  password: {
+    type: String,
+     required:true,
+     validate: pass => {
+      if (pass?.length > 5) {
+        new Error('password must be at least 5 characters');
+      }
+     },
+  },
+}, {timestamps: true});
 
-export const User = models?.User || model('User',UserSchema);
+export const User = models?.User || model('User', UserSchema);
