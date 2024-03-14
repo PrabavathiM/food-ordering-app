@@ -7,7 +7,7 @@ import { useState } from "react";
 export default function RegisterPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    function handleFormatSubmit() {
+    function handleFormatSubmit(ev) {
         ev.preventDefault();
         fetch('/api/register', {
             method: 'POST',
@@ -15,6 +15,7 @@ export default function RegisterPage() {
             headers: { 'Content-Type': 'application/json' },
         });
     }
+    
     return (
         <section className="mt-8">
 
