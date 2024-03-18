@@ -4,24 +4,34 @@ import Link from "next/link";
 import { useState } from "react";
 
 
-
 export default function RegisterPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [creatingUser, setCreatingUser] = useState(false );
+    const [creatingUser, setCreatingUser] = useState(false);
     const [userCreated, setUserCreated] = useState(false);
+    const [error, setError] = useState(false);
     async function handleFormatSubmit(ev) {
         ev.preventDefault();
         setCreatingUser(true);
-        await fetch('/api/register', {
+        setUserCreated(false);
+        
+        const response = await fetch('/api/register', {
             method: 'POST',
             body: JSON.stringify({ email, password }),
-            headers: { 'Content-Type': 'application/json' },
+            headers: {'Content-Type': 'application/json' },
         });
+        if (response.ok){
+            setUserCreated(true);
+        }
+        else {
+            setError(true);
+        }
+        
         setCreatingUser(false);
         setUserCreated(true);
+        SERVER_PROPS_EXPORT_ERROR(true);
     }
-    
+
     return (
         <section className="mt-8">
 
@@ -69,6 +79,10 @@ export default function RegisterPage() {
                     <img src={'/google-icon.png'} alt={''} width={24} height={24} />
                     Login with google
                 </button>
+                    <div className="text-center my-4 text-gray-500">
+                        Existing account?{''}
+                     <Link href={'/login'}>Login here</Link>
+                    </div>
             </form>
             {/* footer */}
             <footer className="border-t p-8 text-center text-gray-500 mt-8">
@@ -77,3 +91,5 @@ export default function RegisterPage() {
         </section>
     );
 }
+
+
