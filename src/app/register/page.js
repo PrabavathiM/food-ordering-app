@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 
@@ -7,13 +8,18 @@ import { useState } from "react";
 export default function RegisterPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    function handleFormatSubmit(ev) {
+    const [creatingUser, setCreatingUser] = useState(false );
+    const [userCreated, setUserCreated] = useState(false);
+    async function handleFormatSubmit(ev) {
         ev.preventDefault();
-        fetch('/api/register', {
+        setCreatingUser(true);
+        await fetch('/api/register', {
             method: 'POST',
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' },
         });
+        setCreatingUser(false);
+        setUserCreated(true);
     }
     
     return (
@@ -35,17 +41,27 @@ export default function RegisterPage() {
             </header>
 
             {/*form part  */}
-            <h1 className="text-center text-primary text-3xl font-semibold mt-5">
+            <h1 className="text-center text-primary text-3xl font-semibold mt-8">
                 Register
             </h1>
-            <form className="block max-w-xs mx-auto" onSubmit={handleFormatSubmit}>
+            {userCreated && (
+                <div className=" mt-4 text-center">
+                    User created. Now you can {''}
+                    <Link className="underline" href={'/login'}>Login &raquo;</Link>
+                </div>
+            )};
+            <form className="block max-w-xs mx-auto -mt-4" onSubmit={handleFormatSubmit}>
                 <input type="email" placeholder="email" value={email}
+                    disabled={creatingUser}
                     onChange={ev => setEmail(ev.target.value)}></input>
 
                 <input type="password" placeholder="password" value={password}
+                    disabled={creatingUser}
                     onChange={ev => setPassword(ev.target.value)}></input>
 
-                <button type="submit">Register</button>
+                <button type="submit" disabled={creatingUser}>
+                    Register    
+                </button>
                 <div className="my-4 text-center text-gray-500" >
                     or login with provider
                 </div>
