@@ -81,7 +81,7 @@ export default function RegisterPage() {
                 </button>
                     <div className="text-center my-4 text-gray-500">
                         Existing account?{''}
-                     <Link href={'/login'}>Login here</Link>
+                     <Link className="underline" href={'/login'}>Login here</Link>
                     </div>
             </form>
             {/* footer */}

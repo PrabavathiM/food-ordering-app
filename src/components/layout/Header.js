@@ -1,4 +1,10 @@
+'use client';
+import { useSession } from "next-auth/react";
+// import Link from "next/link";
+
 export default function Header() {
+    // const session = useSession();
+    // console.log(session);
     return (
 
         <header className="flex items-center justify-between">
@@ -10,7 +16,6 @@ export default function Header() {
                 <a href="">Contact</a>
 
             </nav>
-
 
             <nav className='flex items-center gap-4 text-gray-500'>
                 <a href="/login">Login</a>
