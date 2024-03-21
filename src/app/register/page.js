@@ -14,22 +14,22 @@ export default function RegisterPage() {
         ev.preventDefault();
         setCreatingUser(true);
         setUserCreated(false);
-        
+
         const response = await fetch('/api/register', {
             method: 'POST',
             body: JSON.stringify({ email, password }),
-            headers: {'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json' },
         });
-        if (response.ok){
+        if (response.ok) {
             setUserCreated(true);
         }
         else {
             setError(true);
         }
-        
+
         setCreatingUser(false);
         setUserCreated(true);
-        SERVER_PROPS_EXPORT_ERROR(true);
+
     }
 
     return (
@@ -70,7 +70,7 @@ export default function RegisterPage() {
                     onChange={ev => setPassword(ev.target.value)}></input>
 
                 <button type="submit" disabled={creatingUser}>
-                    Register    
+                    Register
                 </button>
                 <div className="my-4 text-center text-gray-500" >
                     or login with provider
@@ -79,10 +79,10 @@ export default function RegisterPage() {
                     <img src={'/google-icon.png'} alt={''} width={24} height={24} />
                     Login with google
                 </button>
-                    <div className="text-center my-4 text-gray-500">
-                        Existing account?{''}
-                     <Link className="underline" href={'/login'}>Login here</Link>
-                    </div>
+                <div className="text-center my-4 text-gray-500">
+                    Existing account?{''}
+                    <Link className="underline" href={'/login'}>Login here</Link>
+                </div>
             </form>
             {/* footer */}
             <footer className="border-t p-8 text-center text-gray-500 mt-8">
