@@ -32,4 +32,3 @@ section.hero {
     button[type="submit"]:disabled, .submit:disabled{
         @apply cursor-not-allowed bg-violet-700;
     }
-

@@ -3,10 +3,18 @@ import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 
 export default function Header() {
-    const session = useSession(); 
-    console.log(session);
-    const status = session.status;
+    const session = useSession();
     
+    const status = session?.status;
+    const userData = session.data?.user;
+    let userName = userData?.name || userData?.email;
+    if (userName && userName.includes('')) { 
+             userName = userName.split('')[0];
+    }
+   
+
+
+
     return (
         <header className="flex items-center justify-between">
             <Link className="text-primary font-semibold text-3xl" href="">FOOD BOX</Link>
@@ -19,16 +27,20 @@ export default function Header() {
 
             <nav className='flex items-center gap-4 text-gray-500'>
                 {status === 'authenticated' && ( // Check session status
-                    <button 
-                    onClick={() => signOut()} 
-                    className="bg-primary text-white rounded-full px-6 py-2">Logout</button>
+                    <>
+                        <Link href={'profile'}>{userName}</Link>
+                        <button
+                            onClick={() => signOut()}
+                            className="bg-primary text-white rounded-full px-6 py-2">Logout</button>
+                    </>
+
                 )}
                 {status !== 'authenticated' && ( // Check session status
                     <>
                         <Link href="/login">Login</Link>
                         <Link className="bg-primary text-white rounded-full px-6 py-2" href="/register">Register</Link>
                     </>
-                )}        
+                )}
             </nav>
         </header>
     );
